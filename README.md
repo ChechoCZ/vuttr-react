@@ -8,7 +8,7 @@ yarn install
 ```
 This will install all the dependencies. To start the app run:
 ```
-npm start
+yarn start
 ```
 
 p.s: I will provide the link to the API later.
