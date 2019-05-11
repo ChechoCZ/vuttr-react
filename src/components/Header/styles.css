@@ -1,0 +1,15 @@
+.main-header {
+  display: flex;  
+  flex-flow: column wrap;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.main-header h1 {
+  margin-bottom: 5px;
+}
+
+.main-header h3 {
+  margin-top: 5px;
+}

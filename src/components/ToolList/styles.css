@@ -1,0 +1,40 @@
+.tool {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 10px;
+  flex: 1;  
+  margin-bottom: 20px;
+  background: white;
+}
+
+.tool header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tool header h4 {
+  color: rgb(55, 128, 238);
+  text-decoration: underline;
+}
+
+.tool header button {
+  color: black;
+  text-decoration: none;
+  border: 0;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.tool p {
+  margin-bottom: 10px;
+}
+
+.tool small {
+  font-weight: bold;
+  margin-right: 10px;
+}
