@@ -1,38 +1,16 @@
 import React, { Component } from 'react';
 
-import api from '../../services/api';
-
 import './styles.css';
 
 export default class ToolList extends Component {
-  state = {
-    tools: []
+  removeTool(tool) {
+    this.props.removeTool(tool);
   }
-
-  componentDidMount() {
-    this.loadTools();
-  }
-
-  loadTools = async () => {
-    const response = await api.get('/tools');
-
-    const tools = response.data;
-
-    this.setState({ tools: tools });
-  }
-
-  removeTool = async (id) => {
-    await api.delete(`/tools/${id}`);
-
-    this.loadTools();
-  };
 
   render() {
-    const { tools } = this.state;
-
     return (
       <div>
-        {tools.map(element => (
+        {this.props.tools.map(element => (
           <div className="tool" key={element.id}>
             <header>
               <h4>{element.title}</h4>
@@ -46,7 +24,7 @@ export default class ToolList extends Component {
             </div>                     
           </div>
         ))}          
-      </div>      
+      </div>  
     );
   }
 }
