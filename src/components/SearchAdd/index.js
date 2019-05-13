@@ -20,7 +20,7 @@ export default class SearchAdd extends Component {
           <input type="checkbox" name="tag" onChange={this.onlyTags.bind(this)}/><small>Search in Tags only</small>
         </div>
         <div className="add">
-          <button>+ Add</button>
+          <button onClick={this.props.openModal}>+ Add</button>
         </div>
       </div>
     );

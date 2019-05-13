@@ -23,6 +23,7 @@
   background: #46d175;
   font-size: 14px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .add button:hover {

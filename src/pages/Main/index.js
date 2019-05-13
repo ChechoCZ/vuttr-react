@@ -4,6 +4,7 @@ import api from '../../services/api';
 import Header from '../../components/Header';
 import SearchAdd from '../../components/SearchAdd';
 import ToolList from '../../components/ToolList';
+import Modal from '../../components/Modal';
 
 export default class Main extends Component {  
   constructor(props) {
@@ -11,7 +12,8 @@ export default class Main extends Component {
 
     this.state = {
       tools: [],
-      checkTag: false
+      checkTag: false,
+      showModal: false
     }
   }  
 
@@ -22,7 +24,9 @@ export default class Main extends Component {
   loadTools = async () => {
     const response = await api.get('/tools');
 
-    const tools = response.data;
+    console.log(response);
+
+    const tools = response.data.docs;
 
     this.setState({ tools: tools });
   }
@@ -46,21 +50,37 @@ export default class Main extends Component {
     tools = response.data;
 
     if (tools) {
-      console.log(tools);
       this.setState({ tools });
     }
   };
 
-  searchByTag(checkTag) {
+  searchByTag = (checkTag) => {
     this.setState({ checkTag });
+  }
+
+  openModal = () => {
+    this.setState({ showModal: true });
+  }
+
+  closeModal = () => {
+    this.setState({ showModal: false });
   }
 
   render() {
     return (
       <div>
         <Header />
-        <SearchAdd filterTools={(word) => this.filterTools(word)} searchByTag={(check) => this.searchByTag(check)}/>
-        <ToolList removeTool={(tool) => this.removeTool(tool)} tools={this.state.tools} />
+        <SearchAdd 
+          filterTools={(word) => this.filterTools(word)} 
+          searchByTag={(check) => this.searchByTag(check)} 
+          openModal={this.openModal} />
+        <ToolList 
+          removeTool={(tool) => this.removeTool(tool)} 
+          tools={this.state.tools} />
+        <Modal 
+          className="modal"
+          show={this.state.showModal}
+          close={this.closeModal} />
       </div> 
     );
   }

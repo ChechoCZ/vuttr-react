@@ -19,7 +19,7 @@ export default class ToolList extends Component {
             <p>{element.description}</p>
             <div className="tags">
               {element.tags.map(tag => (
-                <small key={element.tag}>#{tag}</small>
+                <small key={tag}>#{tag}</small>
               ))}   
             </div>                     
           </div>
