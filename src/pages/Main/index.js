@@ -24,9 +24,7 @@ export default class Main extends Component {
   loadTools = async () => {
     const response = await api.get('/tools');
 
-    console.log(response);
-
-    const tools = response.data.docs;
+    const tools = response.data;
 
     this.setState({ tools: tools });
   }
@@ -52,7 +50,14 @@ export default class Main extends Component {
     if (tools) {
       this.setState({ tools });
     }
-  };
+  }
+
+  addTool = async (tool) => {
+    await api.post('/tools', tool);
+
+    this.closeModal();
+    this.loadTools();
+  }
 
   searchByTag = (checkTag) => {
     this.setState({ checkTag });
@@ -80,7 +85,8 @@ export default class Main extends Component {
         <Modal 
           className="modal"
           show={this.state.showModal}
-          close={this.closeModal} />
+          close={this.closeModal}
+          addTool={(tool) => this.addTool(tool)} />
       </div> 
     );
   }
